@@ -1,0 +1,18 @@
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+### Linux ###
+.*
+!.gitignore
+*~
+
+### word2vec ###
+./text8
+./text8.gz
+./word-analogy
+./word2phrase
+./word2vec
+./vectors.bin
