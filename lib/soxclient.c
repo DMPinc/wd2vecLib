@@ -26,7 +26,7 @@ main(int argc, char** argv)
  sprintf(cmd, "%s", "/usr/local/bin/play ");
  int n;
  FILE *fp = NULL;
- printf("argc=%d\n",argc);
+ //printf("argc=%d\n",argc);
  sprintf(buf,"%s",argv[1]);
  /* ソケットの作成 */
  sock = socket(AF_INET, SOCK_STREAM, 0);
@@ -39,18 +39,18 @@ main(int argc, char** argv)
  connect(sock, (struct sockaddr *)&server, sizeof(server));
 
  write(sock, buf, sizeof(buf));
- printf("write %s\n",buf);
+ //printf("write %s\n",buf);
  /* サーバからデータを受信 */
  memset(buf, 0, sizeof(buf));
  n = read(sock, buf, sizeof(buf));
-
- printf("%d, %s\n", n, buf);
+ printf("%s",buf);
+ //printf("%d, %s\n", n, buf);
  strcat(cmd, buf);
  //if ( (fp=popen(cmd,"r")) == NULL){
  // err(EXIT_FAILURE, "%s", cmd);
  //}
  //(void)pclose(fp);
- printf ( "cmd: %s\n", cmd);
+ //printf ( "cmd: %s\n", cmd);
  /* socketの終了 */
  close(sock);
 

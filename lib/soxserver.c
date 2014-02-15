@@ -9,12 +9,11 @@
 #include <math.h>
 #include <malloc/malloc.h>
 
-const long long max_size = 200;// max length of word
-const long long N=5; // 5 Best
+const long long max_size = 500;// max dim
+const long long N=3; // 5 Best
 const long long max_w = 50; // words
 
 typedef struct WordVec_t{
-  char st[100][max_size];
   char *bestw[N];
   float bestd[N], vec[max_size];
   long long words /* trained words num */, size /* vector dim */,  bi[100];
@@ -140,7 +139,7 @@ int getNNResult(WordVec* vec, char* words, char *result) {
           }
           vec->bestd[i] = dist;
           strcpy(vec->bestw[i], &(vec->vocab[k* max_w]));
-          //break;
+          break;
         }
       }
   }
