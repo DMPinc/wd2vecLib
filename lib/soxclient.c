@@ -1,3 +1,10 @@
+/**
+* argv[1]をサーバに投げて帰ってきた値をplayコマンドで鳴らすクライアントコマンド
+*
+*
+*
+*
+*/
 #include <stdio.h>
 #include <string.h>
 #include <sys/types.h>
@@ -9,19 +16,20 @@
 #define COMMAND_LENGTH 1024
 
 int
-main()
+main(int argc, char** argv)
 {
  struct sockaddr_in server;
  int sock;
  char buf[COMMAND_LENGTH];
  char cmd[COMMAND_LENGTH];
+ char input[COMMAND_LENGTH];
  sprintf(cmd, "%s", "/usr/local/bin/play ");
  int n;
  FILE *fp = NULL;
-
+ printf("argc=%d\n",argc);
+ sprintf(buf,"%s",argv[1]);
  /* ソケットの作成 */
  sock = socket(AF_INET, SOCK_STREAM, 0);
-
  /* 接続先指定用構造体の準備 */
  server.sin_family = AF_INET;
  server.sin_port = htons(12345);
@@ -30,6 +38,8 @@ main()
  /* サーバに接続 */
  connect(sock, (struct sockaddr *)&server, sizeof(server));
 
+ write(sock, buf, sizeof(buf));
+ printf("write %s\n",buf);
  /* サーバからデータを受信 */
  memset(buf, 0, sizeof(buf));
  n = read(sock, buf, sizeof(buf));
