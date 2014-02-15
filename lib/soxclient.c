@@ -46,10 +46,11 @@ main(int argc, char** argv)
 
  printf("%d, %s\n", n, buf);
  strcat(cmd, buf);
- if ( (fp=popen(cmd,"r")) == NULL){
-  err(EXIT_FAILURE, "%s", cmd);
- }
- (void)pclose(fp);
+ //if ( (fp=popen(cmd,"r")) == NULL){
+ // err(EXIT_FAILURE, "%s", cmd);
+ //}
+ //(void)pclose(fp);
+ printf ( "cmd: %s\n", cmd);
  /* socketの終了 */
  close(sock);
 

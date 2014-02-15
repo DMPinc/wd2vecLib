@@ -15,6 +15,9 @@ word-analogy : word-analogy.c
 compute-accuracy : compute-accuracy.c
 	$(CC) compute-accuracy.c -o compute-accuracy $(CFLAGS)
 	chmod +x *.sh
+sox : soxclient.c soxserver.c
+	$(CC) soxclient.c -o soxclient
+	$(CC) soxserver.c -o soxserver
 
 clean:
 	rm -rf word2vec word2phrase distance word-analogy compute-accuracy
