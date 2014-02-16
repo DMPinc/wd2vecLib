@@ -43,15 +43,12 @@ main(int argc, char** argv)
  /* サーバからデータを受信 */
  memset(buf, 0, sizeof(buf));
  n = read(sock, buf, sizeof(buf));
+ if ( n <= 0 ) {
+  sprintf(buf, "%s", "20/SP" );
+ }
  printf("%s",buf);
  //printf("%d, %s\n", n, buf);
- strcat(cmd, buf);
- //if ( (fp=popen(cmd,"r")) == NULL){
- // err(EXIT_FAILURE, "%s", cmd);
- //}
- //(void)pclose(fp);
- //printf ( "cmd: %s\n", cmd);
- /* socketの終了 */
+
  close(sock);
 
  return 0;
